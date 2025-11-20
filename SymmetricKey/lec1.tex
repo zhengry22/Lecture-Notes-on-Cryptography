@@ -1,0 +1,76 @@
+\documentclass{ctexart}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{subfigure}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{amsthm}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{theorems}
+
+\newtcbtheorem[
+  auto counter,
+  number within=section
+]{mydefinition}{定义}{
+  colback=blue!2!white,       % 超浅背景
+  colframe=gray!50,           % 浅灰边框
+  fonttitle=\bfseries,
+  coltitle=black,
+  left=1.2mm,
+  right=1.2mm,
+  top=1.2mm,
+  bottom=1.2mm,
+  arc=2mm,                    % 圆角
+  boxrule=0.5pt               % 细边框
+}{def}
+
+
+\title{对称密码学}
+\author{郑睿阳}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+\tableofcontents
+\newpage
+\section{引言}
+本教材是现代密码学 \textbf{对称密码学} 的部分，如果您对于密码学的概念尚不了解，可以去阅读 \textbf{密码学简介} 的部分进行入门。
+
+\section{对称密码学简介}
+\subsection{对称加密系统}
+密码学是一门研究 “如何将信息进行保护，从而无法让他人获取有效信息” 的科学。我们知道，Kerckhoff 原则要求: 一个加密系统的安全性
+是由密钥的保密性保证的，而非加密方案本身的安全性。因此，在加密一条信息的时候，我们通常会将其形式化为如下的步骤：
+\begin{itemize} 
+  \item 首先，加密系统当中的 \textbf{密钥生成算法} 生成一个密钥；
+  \item 其次，加密算法将密钥，明文作为输入，得到密文；
+  \item 最后，接收者拿到了密文之后使用密钥解密。
+\end{itemize} 
+\newtheorem{definition}{定义}[section]
+\begin{mydefinition}{对称加密系统}&
+如果发送者和接收者使用的加密、解密的密钥 \textbf{相同}，就称该加密系统为 \textbf{对称加密系统}。
+\end{mydefinition}
+
+通常而言，我们可以将一个加密系统进行形式化为\textbf{三个算法}和\textbf{三个空间}：
+$$\Pi = (Gen, Enc, Dec)$$
+其中, $Gen, Enc, Dec$ 是三个不同的算法，分别对应 \textbf{生成密钥}， \textbf{加密}， \textbf{解密}。
+同时，系统当中还会包含三个空间：$K$ 是密钥空间，$M$ 为明文空间，$C$ 为密文空间。 
+\begin{itemize} 
+  \item $Gen$ 会从 $K$ 中按照概率采样密钥 $k$: $$k \leftarrow Gen(1^\lambda)$$ 
+  这里，$Gen$ 接受一个参数 $1^{\lambda}$ 作为安全参数 (它的含义是 $\lambda$ 个 1构成的字符串)，
+  $\lambda$ 通常与加密系统的安全性正相关。
+  \item $Enc$ 会接受 $k$ 和明文 $m \in M$ 并产生密文 $c \in C$: $$ c \leftarrow Enc(m, k)$$
+  值得注意的一点是，$Enc$ 多数情况下并不是一个确定性算法：给定相同的输入，它可能会在不同的调用场景下
+  产生不同的 $c$.
+  \item $Dec$ 接受 $c, k$ 并产出对应的明文：$$Dec(Enc(m, k)) = m$$
+  它是严格的确定性算法。
+\subsection{完美加密}
+我们不禁会问：最安全的加密系统是什么样的？
+\end{itemize} 
+
+
+
+\end{document}
