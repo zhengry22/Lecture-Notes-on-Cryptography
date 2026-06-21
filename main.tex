@@ -1,0 +1,101 @@
+\documentclass[UTF8]{ctexbook}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{subfigure}
+\usepackage{tikz}
+\usetikzlibrary{positioning,calc,arrows.meta}
+\usepackage{float}
+\usepackage{amsthm}
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{theorems}
+
+\newtcbtheorem[
+  auto counter,
+  number within=section
+]{mydefinition}{定义}{
+  colback=blue!2!white,       % 超浅背景
+  colframe=gray!50,           % 浅灰边框
+  fonttitle=\bfseries,
+  coltitle=black,
+  left=1.2mm,
+  right=1.2mm,
+  top=1.2mm,
+  bottom=1.2mm,
+  arc=2mm,                    % 圆角
+  boxrule=0.5pt               % 细边框
+}{def}
+
+% 浅红色注记框
+\newtcbtheorem[
+  auto counter,
+  number within=section
+]{myremark}{注记}{
+  colback=red!2!white,        % 超浅红背景
+  colframe=red!50,            % 浅红边框
+  fonttitle=\bfseries,
+  coltitle=black,
+  left=1.2mm,
+  right=1.2mm,
+  top=1.2mm,
+  bottom=1.2mm,
+  arc=2mm,
+  boxrule=0.5pt
+}{rem}
+
+
+%\input{style/macros}
+
+\begin{document}
+
+\frontmatter
+
+\title{密码学基础-学习笔记}
+\author{2026 Summer Project}
+\maketitle
+
+\tableofcontents
+
+\mainmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Part 0: Intro
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\part{引言}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Part I: Symmetric-Key Cryptography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\part{对称密码学}
+
+\input{SymmetricKey/chapter01-introduction}
+%\input{SymmetricKey/chapter02-prg}
+%\input{SymmetricKey/chapter03-prf}
+%\input{SymmetricKey/chapter04-blockcipher}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Part II: Public-Key Cryptography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\part{公钥密码学}
+
+%\input{PublicKey/chapter05-number-theory}
+%\input{PublicKey/chapter06-rsa}
+%\input{PublicKey/chapter07-dlog}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Part III: Cryptographic Protocols
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\part{高级密码学原语}
+
+%\input{ZeroKnowledge/chapter08-interactive-proof}
+%\input{ZeroKnowledge/chapter09-zk}
+%
+%\bibliographystyle{alpha}
+%\bibliography{references}
+
+\end{document}
